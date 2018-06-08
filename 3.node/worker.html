@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    console.log(1);
+    let worker = new Worker('./worker.js');
+    worker.postMessage(1000); // 发消息
+    worker.onmessage = function (e) { // 接收消息
+      console.log(e.data); // 消息中的数据
+    }
+    console.log(2);
+  </script>
+</body>
+<!-- 
+  npm install http-server -g
+  http-server
+
+
+ -->
+</html>

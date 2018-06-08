@@ -1,0 +1,19 @@
+{
+  "name": "jw-very-very-handsome",
+  "version": "1.0.1",
+  "description": "我很帅",
+  "main": "1.module.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "mime": "^2.3.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3"
+  }
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="div"></div>
+  <script>
+    // 浏览器：
+    // 宏任务：setTimeout setImmediate MessageChannel
+    // 微任务:promise.then (MutationObserver);
+    
+    //MutationObserver 兼容问题 nextTick
+
+    let observe = new MutationObserver(function () {
+        console.log('dom全部塞进去了');
+    });
+    // 也是一个微任务
+    observe.observe(div,{childList:true});
+    for (let i = 0; i < 100; i++) {
+      let p = document.createElement('p');
+      div.appendChild(p);
+    }
+    console.log(1);
+    let img = document.createElement('p');
+    div.appendChild(img);
+
+    // setTimeout(() => {
+    //   console.log('1setTimeout')
+    //   Promise.resolve('123').then(data => { console.log(3) });
+    // });
+    // setTimeout(() => {
+    //  console.log('2setTimeout'); 
+    // });
+    // 先会执行栈中的内容，栈中内容执行后执行微任务，微任务清空后再执行宏任务，宏任务会在栈中执行，不停的循环，event loop
+
+
+
+
+    // console.log(1);
+    // let channel = new MessageChannel();
+    // let port1 = channel.port1;
+    // let port2 = channel.port2;
+    // // 异步代码 vue 就是宏任务
+    // port1.postMessage('hello');
+    // port2.onmessage = function (e) {
+    //   console.log(e.data);
+    // }
+    // console.log(2);
+
+
+    // setTimeout(function () {
+    //   console.log(1);
+    //   setTimeout(() => {
+    //    console.log(3); 
+    //   });
+    // })
+    // setTimeout(function () {
+    //   console.log(2)
+    // })
+
+
+    // console.log(1);
+    // setTimeout(function () {
+    //   console.log('timeout')
+    // })
+    // setImmediate(function (params) {
+    //   console.log(2)
+    // });
+    // console.log(3);
+  </script>
+</body>
+
+</html>
